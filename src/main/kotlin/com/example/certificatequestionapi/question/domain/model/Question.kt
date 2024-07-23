@@ -1,17 +1,15 @@
 package com.example.certificatequestionapi.question.domain.model
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
 class Question(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
     @Column
-    val answer: String
+    val question: String
 ) {
-    constructor() : this(0, "")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0;
+
+    @OneToMany(mappedBy = "question", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val answers: MutableList<Answer> = mutableListOf();
 }
