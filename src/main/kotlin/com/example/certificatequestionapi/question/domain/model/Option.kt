@@ -3,13 +3,14 @@ package com.example.certificatequestionapi.question.domain.model
 import jakarta.persistence.*
 
 @Entity
-class Answer(
+@Table(name = "OPTIONS")
+class Option(
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name= "question_id")
-    val question: Question,
+    @JoinColumn(name = "question_id", nullable = false)
+    val question: MultipleChoiceQuestion,
 
-    @Column(name = "answer_text", nullable = false)
-    val answerText: String
+    @Column(name = "option_text", nullable = false)
+    val optionText: String
 ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
