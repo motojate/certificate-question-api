@@ -1,5 +1,6 @@
 package com.example.certificatequestionapi.question.domain.model
 
+import com.example.certificatequestionapi.common.enum.QuestionLabel
 import jakarta.persistence.*
 
 @Entity
@@ -10,7 +11,10 @@ class Option(
     val question: MultipleChoiceQuestion,
 
     @Column(name = "option_text", nullable = false)
-    val optionText: String
+    val optionText: String,
+
+    @Column(name = "label", nullable = false)
+    val label: QuestionLabel
 ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
