@@ -3,7 +3,6 @@ package com.example.certificatequestionapi.question.presentation.controller
 import com.example.certificatequestionapi.common.enum.QuestionType
 import com.example.certificatequestionapi.question.application.QuestionService
 import com.example.certificatequestionapi.question.domain.model.Question
-import com.example.certificatequestionapi.question.presentation.dto.CreateQuestionDto
 import com.example.certificatequestionapi.question.presentation.dto.MultipleChoiceQuestionCreateDto
 import com.example.certificatequestionapi.question.presentation.dto.ShortAnswerQuestionCreateDto
 import org.springframework.http.ResponseEntity
@@ -24,13 +23,15 @@ class QuestionController(private val questionService: QuestionService) {
         return ResponseEntity.ok(questions);
     }
 
-    @PostMapping
-    fun createQuestion(@RequestBody request: CreateQuestionDto): ResponseEntity<Question> {
-        val question = when (request) {
-            is ShortAnswerQuestionCreateDto -> questionService.createShortAnswerQuestion(request)
-            is MultipleChoiceQuestionCreateDto -> questionService.createMultipleChoiceQuestion(request)
-            else -> throw IllegalArgumentException("올바르지 않은 값입니다.")
-        }
+    @PostMapping("/multiple-choice")
+    fun createMultipleChoiceQuestion(@RequestBody request: MultipleChoiceQuestionCreateDto): ResponseEntity<Question> {
+        val question = questionService.createMultipleChoiceQuestion(request)
+        return ResponseEntity.ok(question);
+    }
+
+    @PostMapping("/short-answer")
+    fun createShortAnswerQuestion(@RequestBody request: ShortAnswerQuestionCreateDto): ResponseEntity<Question> {
+        val question = questionService.createShortAnswerQuestion(request)
         return ResponseEntity.ok(question);
     }
 
