@@ -5,8 +5,8 @@ import com.example.certificatequestionapi.question.domain.model.MultipleChoiceQu
 import com.example.certificatequestionapi.question.domain.model.Question
 import com.example.certificatequestionapi.question.domain.model.ShortAnswerQuestion
 import com.example.certificatequestionapi.question.domain.repository.QuestionRepository
-import com.example.certificatequestionapi.question.presentation.dto.MultipleChoiceQuestionCreateDto
-import com.example.certificatequestionapi.question.presentation.dto.ShortAnswerQuestionCreateDto
+import com.example.certificatequestionapi.question.presentation.dto.request.MultipleChoiceQuestionCreateDto
+import com.example.certificatequestionapi.question.presentation.dto.request.ShortAnswerQuestionCreateDto
 import org.springframework.stereotype.Service
 
 @Service

@@ -3,8 +3,8 @@ package com.example.certificatequestionapi.question.presentation.controller
 import com.example.certificatequestionapi.common.enum.QuestionType
 import com.example.certificatequestionapi.question.application.QuestionService
 import com.example.certificatequestionapi.question.domain.model.Question
-import com.example.certificatequestionapi.question.presentation.dto.MultipleChoiceQuestionCreateDto
-import com.example.certificatequestionapi.question.presentation.dto.ShortAnswerQuestionCreateDto
+import com.example.certificatequestionapi.question.presentation.dto.request.MultipleChoiceQuestionCreateDto
+import com.example.certificatequestionapi.question.presentation.dto.request.ShortAnswerQuestionCreateDto
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping

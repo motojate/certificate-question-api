@@ -1,4 +1,4 @@
-package com.example.certificatequestionapi.question.presentation.dto
+package com.example.certificatequestionapi.question.presentation.dto.request
 
 import com.example.certificatequestionapi.common.annotation.AllOpen
 import com.example.certificatequestionapi.common.enum.QuestionChapter
