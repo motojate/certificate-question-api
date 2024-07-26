@@ -21,29 +21,28 @@ open class CustomQuestionRepositoryImpl(
 //            QuestionType.SHORT_ANSWER -> ShortAnswerQuestion
 //        }
 //
-        val questions = kotlinJdslJpqlExecutor.findAll {
-            select(
-                new(
-                    QuestionDto::class,
-                    path(Question::id),
-                    path(Question::questionText),
-                    path(Question::questionChapter),
-                    path(Question::questionType),
-                )
-            ).from(entity(Question::class))
-        }.requireNoNulls()
-
-//        return kotlinJdslJpqlExecutor.findAll {
-//            val parent = entity(Question::class)
-//            val query = selectNew<QuestionDto>(
-//                parent(Question::id),
-//                parent(Question::questionText),
-//                parent(Question::questionChapter),
-//                parent(Question::questionType),
-//            ).from(parent)
-//            query
+//        val questions = kotlinJdslJpqlExecutor.findAll {
+//            select(
+//                new(
+//                    QuestionDto::class,
+//                    path(Question::id),
+//                    path(Question::questionText),
+//                    path(Question::questionChapter),
+//                    path(Question::questionType),
+//                )
+//            ).from(entity(Question::class))
 //        }.requireNoNulls()
-        return questions
+
+        return kotlinJdslJpqlExecutor.findAll {
+            val parent = entity(Question::class)
+            val query = selectNew<QuestionDto>(
+                parent(Question::id),
+                parent(Question::questionText),
+                parent(Question::questionChapter),
+                parent(Question::questionType),
+            ).from(parent)
+            query
+        }.requireNoNulls()
     }
 
 //    private fun <T> commonSelectQuestion(entityClass: KClass<T>) {
