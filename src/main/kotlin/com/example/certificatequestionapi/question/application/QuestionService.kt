@@ -7,14 +7,15 @@ import com.example.certificatequestionapi.question.domain.model.ShortAnswerQuest
 import com.example.certificatequestionapi.question.domain.repository.QuestionRepository
 import com.example.certificatequestionapi.question.presentation.dto.request.MultipleChoiceQuestionCreateDto
 import com.example.certificatequestionapi.question.presentation.dto.request.ShortAnswerQuestionCreateDto
+import com.example.certificatequestionapi.question.presentation.dto.response.QuestionDto
 import org.springframework.stereotype.Service
 
 @Service
 class QuestionService(private val questionRepository : QuestionRepository) {
 
-    fun getAllQuestions(type: QuestionType): List<Question> {
-        println("타입"+type)
-        return questionRepository.getQuestionsByType(type)
+    fun getAllQuestions(type: QuestionType): List<QuestionDto> {
+        val questions = questionRepository.getQuestionsByType(type)
+        return questions;
     }
 
     fun createShortAnswerQuestion(dto: ShortAnswerQuestionCreateDto): Question {

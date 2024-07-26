@@ -5,12 +5,12 @@ plugins {
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
     kotlin("plugin.allopen") version "2.0.0"
-    kotlin("kapt") version "1.6.21"
+    kotlin("kapt") version "1.9.24"
 }
 
 allOpen {
     annotation("com.example.certificatequestionapi.common.annotation.AllOpen")
-    annotation("jakarta.persistence.Entity")
+//    annotation("jakarta.persistence.Entity")
 //    annotation("jakarta.persistence.MappedSuperclass")
 //    annotation("jakarta.persistence.Embeddable")
 }
@@ -39,10 +39,19 @@ dependencies {
     implementation("com.linecorp.kotlin-jdsl:jpql-dsl:$jdslVersion")
     implementation("com.linecorp.kotlin-jdsl:jpql-render:$jdslVersion")
     implementation("com.linecorp.kotlin-jdsl:spring-data-jpa-support:$jdslVersion")
+
+    // querydsl
+    implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+    implementation("jakarta.persistence:jakarta.persistence-api")
+    kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
+
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa", version = "5.0.0")
 }
 
 kotlin {
