@@ -21,4 +21,7 @@ class User(
 
     @Column(name = "select_question_type")
     val selectQuestionType: QuestionType = QuestionType.SHORT_ANSWER
+
+    @Column(name = "select_question_count")
+    val selectQuestionCount: Int = 20
 }
