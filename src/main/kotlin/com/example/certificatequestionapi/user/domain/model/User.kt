@@ -1,5 +1,6 @@
 package com.example.certificatequestionapi.user.domain.model
 
+import com.example.certificatequestionapi.common.enum.QuestionType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -17,4 +18,7 @@ class User(
 
     @Column(name = "exp")
     val exp: Int = 0
+
+    @Column(name = "select_question_type")
+    val selectQuestionType: QuestionType = QuestionType.SHORT_ANSWER
 }
